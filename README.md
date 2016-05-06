@@ -9,7 +9,7 @@ Sup looks through your commit history since the last marked tag to your current 
 
 Line numbers are 1 indexed and parenthesis are required for regular expressions if they need to be captured. Don't forget to double escape backslashes (e.g \\d+)
 
-```json
+```javascript
 {
   "file": "CHANGELOG.md",    // Optional changelog file path relative to repository root.
                              // default "CHANGELOG.md"

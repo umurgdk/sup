@@ -15,7 +15,7 @@ Sup looks through your commit history since the last marked tag to your current 
 
 ### Sample
 
-PUT SCREENSHOT HERE
+![screenshot](https://raw.githubusercontent.com/umurgdk/sup/master/screenshot.png)
 
 ## Build
 

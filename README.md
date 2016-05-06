@@ -28,7 +28,7 @@ Sup looks through your commit history since the last marked tag to your current 
 
 ## Build
 
-Sup has two dependencies libgit2 and boost. Haven't tried to build on linux. But it should work anyway.
+Sup has two dependencies libgit2 and boost. Tested on macOS and Ubuntu 16.04.
 
 ### Install Dependencies
 

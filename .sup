@@ -1,0 +1,14 @@
+{
+  "file": "CHANGELOG.md",
+  "tagFilter": "v*",
+  "filter": "^[^\\s]+[\\(:]{1}",
+  "issueType": {
+    "regex": "^([^\\s]+)[\\(:]{1}"
+  },
+  "body": {
+    "regex": "^[^\\s]+:\\s*(.*)"
+  },
+  "issueIdRegex": "^.*\\(#.*\\):",
+  "template": "* $body [$issueId]",
+  "omitNewlinesInBody": true
+}

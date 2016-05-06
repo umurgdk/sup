@@ -1,9 +1,35 @@
 # sup
 Automatic changelog generator for git repositories.
 
+```
+$ sup --help
+Allowed options:
+  --help                prints this message
+  --repository arg (=.) path to repository
+  --version arg         new version number to be rendered as title
+```
+
 ## Overview
 
-Sup looks through your commit history since the last marked tag to your current head and extracts changelog data specified by `.sup` file in the repository root.
+Sup looks through your commit history since the last marked tag to your current head and extracts changelog data specified by `.sup` file in the repository root. Extracted changelog data then prepended to given changelog file. Sup needs to know which version you want to generate changelog for, so version defined at `--version` parameter will be used as prepended changelog title. Every captured commit will be grouped by their issue types. Features commits under feature title etc.
+
+### Sample
+
+PUT SCREENSHOT HERE
+
+## Build
+
+Sup has two dependencies libgit2 and boost. Haven't tried to build on linux. But it should work anyway.
+
+```
+$ git clone https://github.com/umurgdk/sup
+$ cd sup
+$ brew install libgit2 boost
+$ mkdir build
+$ cd build
+$ cmake ../
+$ make sup
+```
 
 ## Configuration (`.sup` file)
 

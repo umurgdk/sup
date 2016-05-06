@@ -72,7 +72,7 @@ Line numbers are 1 indexed and parenthesis are required for regular expressions 
 
   // change log entry template
   // available variables are $issueId, $body, $issueType
-  "template": "* $body\n[$issueId](https://backbase.atlassian.net/browse/$issueId)",
+  "template": "* $body\n[$issueId](https://github.com/umurgdk/sup/issues/$issueId)",
   
   "issueType": { 
     // Required issue type parser options. (feature, bugfix, error, etc.)

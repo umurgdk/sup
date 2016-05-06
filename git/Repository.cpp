@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <algorithm>
 #include "Repository.h"
 #include "RevWalker.h"
 
@@ -50,7 +51,7 @@ vector<Tag> Repository::GetTagsImplementation(ReferenceIterator &iterator)
         tags.push_back(iterator.Item<Tag>());
     }
 
-    sort(tags.begin(), tags.end(), Tag::DefaultComparator);
+    std::sort(tags.begin(), tags.end(), Tag::DefaultComparator);
 
     return tags;
 }
@@ -86,7 +87,7 @@ vector<Commit> Repository::GetCommitsInRange(const string &from, const string &t
         commits.emplace_back(walker.Item<Commit>());
     }
 
-    sort(commits.begin(), commits.end(), Commit::DefaultComparator);
+    std::sort(commits.begin(), commits.end(), Commit::DefaultComparator);
 
     return commits;
 }

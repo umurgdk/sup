@@ -37,5 +37,5 @@ string EntryTypeParser::Parse(const string &content)
         }
     }
 
-    return "";
+    return "feature";
 }

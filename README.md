@@ -9,6 +9,15 @@ Allowed options:
   --version arg         new version number to be rendered as title
 ```
 
+## Install
+
+Currently only OSX supported. Follow build instructions for Linux.
+
+```
+$ brew tap umurgdk/sup
+$ brew install sup
+```
+
 ## Overview
 
 Sup looks through your commit history since the last marked tag to your current head and extracts changelog data specified by `.sup` file in the repository root. Extracted changelog data then prepended to given changelog file. Sup needs to know which version you want to generate changelog for, so version defined at `--version` parameter will be used as prepended changelog title. Every captured commit will be grouped by their issue types. Features commits under feature title etc.

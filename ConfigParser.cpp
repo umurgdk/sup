@@ -73,6 +73,7 @@ void ConfigParser::ParseMessageParserOptions(const boost::property_tree::ptree &
         options.line_number = *line_number;
         options.regex_based = false;
         options.one_line = true;
+        options.until_delimiter = false;
         return;
     }
 
@@ -80,6 +81,7 @@ void ConfigParser::ParseMessageParserOptions(const boost::property_tree::ptree &
     if (regex) {
         options.regex = *regex;
         options.regex_based = true;
+        options.until_delimiter = false;
         return;
     }
 

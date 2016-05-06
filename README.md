@@ -11,7 +11,7 @@ Allowed options:
 
 ## Install
 
-Currently only OSX supported. Follow build instructions for Linux.
+Follow build instructions for Linux.
 
 ```
 $ brew tap umurgdk/sup
@@ -30,19 +30,27 @@ Sup looks through your commit history since the last marked tag to your current 
 
 Sup has two dependencies libgit2 and boost. Haven't tried to build on linux. But it should work anyway.
 
+### Install Dependencies
+
+```
+# macOS
+$ brew cmake install libgit2 boost
+
+# ubuntu
+$ sudo apt install git cmake libboost-program-options-dev libboost-filesystem-dev libgit2-dev
+```
+
+### Build & Install
 ```
 $ git clone https://github.com/umurgdk/sup
 $ cd sup
-$ brew install libgit2 boost
-$ mkdir build
-$ cd build
-$ cmake ../
-$ make sup
+$ cmake . && make
+$ sudo make install
 ```
 
 ## Configuration (`.sup` file)
 
-Line numbers are 1 indexed and parenthesis are required for regular expressions if they need to be captured. Don't forget to double escape backslashes (e.g \\d+)
+Line numbers are 1 indexed and parenthesis are required for regular expressions if they need to be captured. Don't forget to double escape backslashes (e.g \\\\d+)
 
 ```javascript
 {

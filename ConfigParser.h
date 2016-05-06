@@ -25,7 +25,9 @@ typedef struct SupConfig {
     string filter_regex = ".*";
     string tag_filter = "v*";
     string file_path;
+
     bool omit_newlines = false;
+    bool group_by_issue_type = true;
 } SupConfig;
 
 class ConfigParser

@@ -63,9 +63,13 @@ int main(int argc, char **argv)
 
     vector<Commit> commits = repository->GetCommitsInRange(tag.name, "HEAD");
     map<string, stringstream> output_by_issue_types;
+    stringstream output;
+
+    output << "# " << version << '\n';
 
     regex merge_regex{config.filter_regex};
     smatch matcher;
+    int collected_entries_count = 0;
     for (const auto &commit : commits) {
         if (!regex_search(commit.message, matcher, merge_regex)) {
             continue;
@@ -75,7 +79,7 @@ int main(int argc, char **argv)
                                                 commit.message);
         auto new_template = config.entry_template;
 
-        if (output_by_issue_types.count(entry.type) == 0) {
+        if (config.group_by_issue_type && output_by_issue_types.count(entry.type) == 0) {
             output_by_issue_types[entry.type] = stringstream{};
         }
 
@@ -87,13 +91,24 @@ int main(int argc, char **argv)
         replace_all(new_template, "$body", entry.body);
         replace_all(new_template, "$issueType", entry.type);
 
-        output_by_issue_types[entry.type] << new_template << '\n';
+        collected_entries_count += 1;
+
+        if (config.group_by_issue_type) {
+            output_by_issue_types[entry.type] << new_template << '\n';
+        } else {
+            output << new_template << '\n';
+        }
     }
 
-    stringstream output;
-    output << "# " << version << '\n';
-    for (const auto &pair : output_by_issue_types) {
-        output << "### " << pair.first << '\n' << pair.second.str() << '\n';
+    if (collected_entries_count == 0) {
+        cout << "No commits added to changelog!" << endl;
+        return 0;
+    }
+
+    if (config.group_by_issue_type) {
+        for (const auto &pair : output_by_issue_types) {
+            output << "### " << pair.first << '\n' << pair.second.str() << '\n';
+        }
     }
 
     auto markdown_path = supfile_path.parent_path() / fs::path(config.file_path);

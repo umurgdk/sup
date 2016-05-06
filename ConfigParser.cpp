@@ -11,6 +11,7 @@
 #include <boost/filesystem/path.hpp>
 #include "ConfigParser.h"
 #include "parsers/EntryTypeParser.h"
+#include "parsers/EntryMessageParser.h"
 
 SupConfig ConfigParser::Parse(const fs::path &path)
 {
@@ -37,6 +38,7 @@ SupConfig ConfigParser::Parse(const fs::path &path)
     config.filter_regex = tree.get<string>("filter", ".*");
     config.tag_filter = tree.get<string>("tagFilter", "v*");
     config.file_path = tree.get<string>("file", "CHANGELOG.md");
+    config.group_by_issue_type = tree.get<bool>("groupByIssueType", true);
 
     return config;
 }
